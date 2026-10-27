@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SES 高雄夢時代改裝規劃 ｜ 互動式提案平台</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            samsung: {
+              blue: '#2e75d3',
+              dark: '#0c1017',
+              navy: '#0f172a',
+              glow: '#38bdf8',
+              surface: '#172033',
+              border: '#334155'
+            }
+          },
+          fontFamily: {
+            sans: ['"Noto Sans TC"', 'Inter', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* Custom refined scrollbar */
+    ::-webkit-scrollbar { width: 7px; height: 7px; }
+    ::-webkit-scrollbar-track { background: #0c1017; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #2e75d3; }
+
+    .glow-effect {
+      box-shadow: 0 0 25px -4px rgba(46, 117, 211, 0.45);
+    }
+    .roadshow-active-glow {
+      box-shadow: 0 0 35px -2px rgba(56, 189, 248, 0.6);
+    }
+    .badge-pulse {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .5; }
+    }
+    .perspective-grid {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    }
+  </style>
+</head>
+
+<body class="bg-[#0b0f17] text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white pb-24">
+
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#0c1017]/85 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+      <div class="flex items-center gap-4 py-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 to-sky-400 flex items-center justify-center font-black tracking-wider text-white shadow-lg shadow-blue-500/30">
+          <i class="fa-solid fa-gem text-lg"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono font-bold tracking-widest text-sky-400 uppercase">SES KAOHSIUNG DREAM MALL</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-900/60 text-blue-300 border border-blue-700/50 font-mono">V3 PROPOSAL</span>
+          </div>
+          <h1 class="text-base sm:text-lg font-bold text-white tracking-tight leading-none mt-0.5">
+            SES 高雄夢時代改裝規劃 ｜ 互動平台
+          </h1>
+        </div>
+      </div>
+
+      <!-- Quick Nav Links -->
+      <nav class="hidden md:flex items-center gap-1 font-medium text-sm text-slate-300">
+        <a href="#spatial-plan" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-800 transition">平面與情境</a>
+        <a href="#core-zones" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-800 transition">六大必備區</a>
+        <a href="#materials-craft" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-800 transition">精品材質工藝</a>
+        <a href="#project-gates" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-800 transition">查驗關卡(G0-G7)</a>
+        <a href="#schedule-boq" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-800 transition">工程排程與報價</a>
+      </nav>
+
+      <!-- Mode Switch Controller -->
+      <div class="flex items-center bg-slate-900 border border-slate-700/80 rounded-xl p-1 shadow-inner">
+        <button id="btn-mode-daily" onclick="switchStoreMode('daily')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 text-white shadow transition-all duration-300">
+          <i class="fa-solid fa-store"></i>
+          <span>日常營運模式</span>
+        </button>
+        <button id="btn-mode-roadshow" onclick="switchStoreMode('roadshow')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all duration-300">
+          <i class="fa-solid fa-wand-magic-sparkles text-sky-400"></i>
+          <span>Roadshow 工作坊</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section & Key Principles -->
+  <section class="relative overflow-hidden pt-8 pb-12 border-b border-slate-800/80 perspective-grid">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Top Meta Banner -->
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-6 text-xs text-slate-400 font-mono">
+        <div class="flex items-center gap-4">
+          <span class="flex items-center gap-1.5 text-blue-400 font-medium">
+            <i class="fa-regular fa-calendar-check"></i> 提案日期：2026年10月12日
+          </span>
+          <span class="hidden sm:inline text-slate-600">|</span>
+          <span>提案單位：Cogito Retail Design Team</span>
+          <span class="hidden sm:inline text-slate-600">|</span>
+          <span class="text-amber-400 font-medium"><i class="fa-solid fa-user-shield"></i> 審查顧問：TONY (Proposal Architect)</span>
+        </div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-slate-300 text-xs">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 badge-pulse"></span>
+          <span>現勘基準：夢時代 12,040mm 挑高立面</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Left: Proposal Core Manifesto -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="inline-block px-3 py-1 rounded-md bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono font-bold tracking-wider uppercase">
+            FLAGSHIP FOLDABLE EXPERIENCE CORE
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+            精品品質與完整改裝<br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-300">
+              數位體驗與 Roadshow V3
+            </span>
+          </h1>
+          <p class="text-slate-300 text-base sm:text-lg font-normal leading-relaxed">
+            本案以旗艦摺疊手機的尊榮價值與 Samsung 品牌工藝為核心，統籌規劃天花摺疊光形、織紋壁紙、大板石材地坪、齊平嵌入地毯與精品展台道具。落實 <span class="text-sky-300 font-medium">「日常營運與工作坊共用配置」</span>，確保不需挪動大型道具即可在日常零售與高人流活動中彈性切換。
+          </p>
+
+          <!-- 4 Pillars Quick Summary Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+            <div class="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 hover:border-blue-500/50 transition">
+              <div class="w-8 h-8 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center mb-2">
+                <i class="fa-solid fa-gem text-sm"></i>
+              </div>
+              <div class="text-sm font-bold text-white">品質優先</div>
+              <div class="text-xs text-slate-400 mt-1">極致金屬與精工細節</div>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 hover:border-blue-500/50 transition">
+              <div class="w-8 h-8 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center mb-2">
+                <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+              </div>
+              <div class="text-sm font-bold text-white">摺疊主角</div>
+              <div class="text-xs text-slate-400 mt-1">高架陳列開合型態</div>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 hover:border-blue-500/50 transition">
+              <div class="w-8 h-8 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center mb-2">
+                <i class="fa-solid fa-hand-pointer text-sm"></i>
+              </div>
+              <div class="text-sm font-bold text-white">真實體驗</div>
+              <div class="text-xs text-slate-400 mt-1">個人實機多工任務</div>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 hover:border-blue-500/50 transition">
+              <div class="w-8 h-8 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center mb-2">
+                <i class="fa-solid fa-users-gear text-sm"></i>
+              </div>
+              <div class="text-sm font-bold text-white">服務價值</div>
+              <div class="text-xs text-slate-400 mt-1">專屬教學與尊榮交機</div>
+            </div>
+          </div>
+
+          <!-- Newly Added: 旗艦設計意向星AI夜遊全景圖 -->
+          <div class="pt-3">
+            <div class="relative rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl group bg-slate-900">
+              <img 
+                src="https://firebasestorage.googleapis.com/v0/b/k16-tony-ai-wisdom-platform.firebasestorage.app/o/assets%2F6av64EOvvqQNAIoXqcPfHC5BBeF3%2F1791826343500_01_%E6%98%9FAI%E5%A4%9C%E9%81%8A%E5%85%A8%E6%99%AF.png?alt=media&token=88724db7-c643-40e4-a6a9-ba0c79bb5ab2" 
+                alt="SES 高雄夢時代精品旗艦設計意向（星AI夜遊全景）" 
+                class="w-full h-auto object-cover transform group-hover:scale-[1.02] transition duration-500 ease-out"
+                loading="lazy"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent pointer-events-none"></div>
+              <div class="absolute bottom-3 left-3 right-3 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-300 font-mono pointer-events-none">
+                <span class="flex items-center gap-1.5 bg-slate-900/85 backdrop-blur-md px-2.5 py-1 rounded-lg border border-slate-700/70 text-sky-300">
+                  <i class="fa-solid fa-camera text-sky-400"></i> 精品旗艦設計意向 ｜ 星AI夜遊全景
+                </span>
+                <span class="bg-blue-950/85 backdrop-blur-md text-blue-200 px-2.5 py-1 rounded-lg border border-blue-700/50">
+                  面寬 12,040mm 寫實視角
+                </span>
+              </div>
+            </div>
+            <p class="text-[11px] text-slate-400 mt-2 font-mono flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-info text-blue-400"></i> 
+              寫實視覺表達材料及使用情境，尺寸、材料與正式產品依現勘 CAD 及官方核定圖為準。
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Current Active State Preview Card -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="rounded-2xl bg-gradient-to-b from-slate-800/90 to-slate-900 border border-slate-700/80 p-5 shadow-2xl relative overflow-hidden">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-700">
+              <div class="flex items-center gap-2">
+                <span id="mode-status-dot" class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                <span id="mode-badge-title" class="font-bold text-sm text-white">當前模式：日常旗艦零售</span>
+              </div>
+              <span id="mode-time-tag" class="text-xs font-mono text-slate-400">標準 4000K 商品聚焦光</span>
+            </div>
+
+            <!-- Mode Description Dynamic Body -->
+            <div id="mode-desc-box" class="py-4 space-y-3">
+              <div class="text-sm text-slate-300 leading-relaxed" id="mode-summary-text">
+                日常營運注重安靜舒適的高品質賞機動線。4.05米中島維持產品足夠留白；左側教學桌容納個別深度諮詢；右側交機桌專屬驗機並引導至低座等候區。
+              </div>
+
+              <!-- Interactive Live Metric Badges -->
+              <div class="grid grid-cols-3 gap-2 pt-2">
+                <div class="p-2.5 rounded-lg bg-slate-950/60 border border-slate-800 text-center">
+                  <div class="text-[11px] text-slate-400">教學區席位</div>
+                  <div id="metric-seats" class="text-base font-bold text-sky-400 mt-0.5">4席 (對坐)</div>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-950/60 border border-slate-800 text-center">
+                  <div class="text-[11px] text-slate-400">主螢幕顯示</div>
+                  <div id="metric-screen" class="text-base font-bold text-blue-300 mt-0.5">Galaxy KV</div>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-950/60 border border-slate-800 text-center">
+                  <div class="text-[11px] text-slate-400">動線通道淨寬</div>
+                  <div class="text-base font-bold text-emerald-400 mt-0.5">≥ 100 cm</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fast Actions -->
+            <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+              <span class="flex items-center gap-1.5"><i class="fa-solid fa-bolt text-amber-400"></i> 一鍵切換情境</span>
+              <button onclick="toggleModeAuto()" class="text-blue-400 hover:text-blue-300 font-semibold underline underline-offset-4">
+                立即切換運作模式 &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- Newly Added: 門面斜角透視意向圖 -->
+          <div class="relative rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl group bg-slate-900">
+            <img 
+              src="https://firebasestorage.googleapis.com/v0/b/k16-tony-ai-wisdom-platform.firebasestorage.app/o/assets%2F6av64EOvvqQNAIoXqcPfHC5BBeF3%2F1791825824489_18_%E9%96%80%E9%9D%A2%E6%96%9C%E8%A7%92.png?alt=media&token=2db366a5-6b48-441c-9955-c93c3fec8c4a" 
+              alt="SES 高雄夢時代門面斜角透視意向" 
+              class="w-full h-auto object-cover transform group-hover:scale-[1.02] transition duration-500 ease-out"
+              loading="lazy"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent pointer-events-none"></div>
+            <div class="absolute bottom-3 left-3 right-3 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-300 font-mono pointer-events-none">
+              <span class="flex items-center gap-1.5 bg-slate-900/85 backdrop-blur-md px-2.5 py-1 rounded-lg border border-slate-700/70 text-sky-300">
+                <i class="fa-solid fa-cube text-sky-400"></i> 門面尺度與摺疊空間記憶
+              </span>
+              <span class="bg-blue-950/85 backdrop-blur-md text-blue-200 px-2.5 py-1 rounded-lg border border-blue-700/50">
+                斜角透視視角
+              </span>
+            </div>
+          </div>
+          <p class="text-[11px] text-slate-400 font-mono flex items-center gap-1.5">
+            <i class="fa-solid fa-circle-info text-blue-400"></i> 
+            天花折型光帶引導視線向深處延伸，完整呼應摺疊機開合幾何語言。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: Interactive Spatial Blueprint & Hotspot Inspector -->
+  <section id="spatial-plan" class="py-12 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <div class="text-xs font-mono font-bold tracking-widest text-blue-400 uppercase">
+            SPATIAL MASTERPLAN &amp; ERGONOMIC FLOW
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">
+            空間平面配置與 12,040mm 主要通道檢核
+          </h2>
+          <p class="text-sm text-slate-400 mt-1">
+            點擊下方平面圖上的功能區塊（Hotspot），即時檢視該區域的詳細規格、動線留白與驗收證據交付。
+          </p>
+        </div>
+        
+        <!-- Floor plan legend -->
+        <div class="flex flex-wrap items-center gap-3 text-xs bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2 text-slate-300">
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-600"></span> 中島展示核心</span>
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-sky-800 border border-sky-400"></span> 齊平嵌入地毯區</span>
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-slate-700"></span> 精品壁櫃/櫃台</span>
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-600/80"></span> 通道淨寬 ≥100cm</span>
+        </div>
+      </div>
+
+      <!-- Main Floor Plan Interactive Canvas & Spec Split -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: Interactive Schematic Floor Plan (7 cols) -->
+        <div class="lg:col-span-7 bg-slate-900/80 border border-slate-700/80 rounded-2xl p-5 shadow-2xl relative">
+          <div class="flex items-center justify-between text-xs text-slate-400 mb-3 font-mono">
+            <span>[BOH / 實體後場機電界線]</span>
+            <span class="text-emerald-400 font-medium"><i class="fa-solid fa-arrows-left-right"></i> 店面總面寬 12,040mm</span>
+          </div>
+
+          <!-- Floor Plan Layout Grid Map -->
+          <div class="relative w-full aspect-[16/10] bg-[#101726] border-2 border-slate-700 rounded-xl p-4 flex flex-col justify-between overflow-hidden shadow-inner">
+            
+            <!-- Ceiling light pattern watermark overlay -->
+            <div class="absolute inset-0 pointer-events-none opacity-20 flex items-center justify-center">
+              <svg width="90%" height="80%" viewBox="0 0 400 200" fill="none">
+                <polygon points="30,20 370,20 320,170 80,170" stroke="#38bdf8" stroke-width="2" stroke-dasharray="6 4" fill="rgba(56,189,248,0.03)" />
+                <line x1="200" y1="20" x2="200" y2="170" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4 4" />
+              </svg>
+            </div>
+
+            <!-- ROW 1: Back Wall (Accessories, Hero Wall, Checkout & BOH) -->
+            <div class="grid grid-cols-12 gap-2 relative z-10">
+              <!-- Accessories Wall (Zone 3) -->
+              <div onclick="selectZone('accessories')" id="map-accessories" class="col-span-5 bg-slate-800/90 hover:bg-blue-900/50 border border-slate-600 hover:border-sky-400 rounded-lg p-2.5 cursor-pointer transition text-left group">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-bold text-white group-hover:text-sky-300">壁櫃掛配件區 (4模組)</span>
+                  <i class="fa-solid fa-headphones text-slate-400 group-hover:text-sky-300 text-xs"></i>
+                </div>
+                <div class="text-[10px] text-slate-400 mt-1">整面實機掛鉤＋下櫃庫存</div>
+              </div>
+
+              <!-- Galaxy Hero Display Wall (Zone 1) -->
+              <div onclick="selectZone('herowall')" id="map-herowall" class="col-span-4 bg-blue-950/90 hover:bg-blue-900 border border-blue-500/80 rounded-lg p-2.5 cursor-pointer transition text-center group">
+                <div class="text-[11px] font-bold text-sky-200 flex items-center justify-center gap-1">
+                  <i class="fa-solid fa-tv text-xs"></i> Galaxy 形象主視覺牆
+                </div>
+                <div class="text-[10px] text-blue-300 mt-1 font-mono" id="map-herowall-text">大尺寸液晶 / 散熱檢修</div>
+              </div>
+
+              <!-- Checkout & BOH (Zone 2) -->
+              <div onclick="selectZone('checkout')" id="map-checkout" class="col-span-3 bg-slate-800/90 hover:bg-blue-900/50 border border-slate-600 hover:border-sky-400 rounded-lg p-2.5 cursor-pointer transition text-left group">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-bold text-white group-hover:text-sky-300">結帳櫃台</span>
+                  <span class="text-[9px] px-1 py-0.5 bg-slate-900 text-slate-300 rounded">BOH門</span>
+                </div>
+                <div class="text-[10px] text-slate-400 mt-1">POS / 分流動線</div>
+              </div>
+            </div>
+
+            <!-- Middle Aisle Distance Indicator -->
+            <div class="flex items-center justify-between py-1 px-4 relative z-10">
+              <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800">
+                &uarr; 後走道淨寬 ≥ 1000mm
+              </span>
+              <span class="text-[10px] font-mono text-slate-500">
+                [中島雙向可繞行環狀動線]
+              </span>
+              <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800">
+                後場取件直通櫃台 &rarr;
+              </span>
+            </div>
+
+            <!-- ROW 2: Main Islands & Experiential Hubs -->
+            <div class="grid grid-cols-12 gap-3 items-center relative z-10 my-2">
+              
+              <!-- Left: Training & Roadshow Zone (Zone 5) with Embedded Carpet -->
+              <div onclick="selectZone('training')" id="map-training" class="col-span-4 bg-sky-950/40 hover:bg-sky-900/60 border-2 border-dashed border-sky-400/80 rounded-xl p-3 cursor-pointer transition relative group">
+                <div class="absolute -top-2 left-2 bg-sky-500 text-white text-[9px] font-bold px-1.5 py-0.2 rounded shadow">
+                  嵌入地毯 (齊平)
+                </div>
+                <div class="text-xs font-bold text-sky-200 mt-1">彈性教學與工作坊</div>
+                <div class="text-[10px] text-sky-300/80 mt-1 font-mono">4席對坐 + 桌端講師示範</div>
+                <div class="text-[9px] text-slate-400 mt-0.5">75吋教學輔助大螢幕</div>
+              </div>
+
+              <!-- Center: Hero Foldable Island Table (Zone 4) -->
+              <div onclick="selectZone('island')" id="map-island" class="col-span-4 bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 hover:from-blue-600 hover:to-indigo-600 border-2 border-blue-300 rounded-xl p-3.5 cursor-pointer transition text-center shadow-lg group">
+                <div class="text-xs font-bold text-white tracking-wide flex items-center justify-center gap-1.5">
+                  <i class="fa-solid fa-mobile-screen"></i> 摺疊旗艦中島桌
+                </div>
+                <div class="text-[11px] text-sky-100 font-mono mt-1 font-medium">4.05m 模組化長桌</div>
+                <div class="text-[9px] text-blue-200 mt-0.5">高架立體支座 ｜ 隱藏防盜配線</div>
+              </div>
+
+              <!-- Right: Customer Service & Delivery Zone (Zone 6) -->
+              <div onclick="selectZone('delivery')" id="map-delivery" class="col-span-4 bg-sky-950/40 hover:bg-sky-900/60 border-2 border-dashed border-sky-400/80 rounded-xl p-3 cursor-pointer transition relative group">
+                <div class="absolute -top-2 right-2 bg-sky-500 text-white text-[9px] font-bold px-1.5 py-0.2 rounded shadow">
+                  嵌入地毯 (齊平)
+                </div>
+                <div class="text-xs font-bold text-sky-200 mt-1">專屬交機桌 / 客服</div>
+                <div class="text-[10px] text-sky-300/80 mt-1 font-mono">2席個別驗機 + 低座等候區</div>
+                <div class="text-[9px] text-slate-400 mt-0.5">55吋 Smart Switch 輔助螢幕</div>
+              </div>
+            </div>
+
+            <!-- ROW 3: Front Main Entrance & Mall Corridor (12040mm) -->
+            <div class="bg-slate-800/80 border-t-2 border-blue-500/80 rounded-lg p-2 text-center relative z-10">
+              <div class="flex items-center justify-between text-[11px] font-bold text-white">
+                <span class="text-sky-400">&larr; 夢時代主商場動線</span>
+                <span class="tracking-wide">門面入口迎賓帶 (面寬 12,040mm ｜ 正面開放式視線無遮擋)</span>
+                <span class="text-sky-400">往電梯大廳 &rarr;</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom tips -->
+          <div class="flex items-center justify-between mt-3 text-xs text-slate-400">
+            <span><i class="fa-solid fa-circle-info text-blue-400 mr-1"></i> 家具、曲線、柱位與門扇依現場現勘 CAD 正式核定</span>
+            <span class="text-emerald-400"><i class="fa-solid fa-check mr-1"></i>符合無障礙轉折尺度</span>
+          </div>
+
+          <!-- Newly Added: 全店鳥瞰透視圖 -->
+          <div class="mt-4">
+            <div class="relative rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl group bg-slate-900">
+              <img 
+                src="https://firebasestorage.googleapis.com/v0/b/k16-tony-ai-wisdom-platform.firebasestorage.app/o/assets%2F6av64EOvvqQNAIoXqcPfHC5BBeF3%2F1791825429372_02_%E5%85%A8%E5%BA%97%E9%B3%A5%E7%9E%B0.png?alt=media&token=73b1038e-f133-47ea-9ac1-3b81895f45c6" 
+                alt="SES 高雄夢時代全店鳥瞰與功能接點" 
+                class="w-full h-auto object-cover transform group-hover:scale-[1.02] transition duration-500 ease-out"
+                loading="lazy"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent pointer-events-none"></div>
+              <div class="absolute bottom-3 left-3 right-3 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-300 font-mono pointer-events-none">
+                <span class="flex items-center gap-1.5 bg-slate-900/85 backdrop-blur-md px-2.5 py-1 rounded-lg border border-slate-700/70 text-sky-300">
+                  <i class="fa-solid fa-layer-group text-sky-400"></i> 精品旗艦設計意向 ｜ 全店鳥瞰與功能接點
+                </span>
+                <span class="bg-blue-950/85 backdrop-blur-md text-blue-200 px-2.5 py-1 rounded-lg border border-blue-700/50">
+                  3D Axonometric View
+                </span>
+              </div>
+            </div>
+            <p class="text-[11px] text-slate-400 mt-2 font-mono flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-info text-blue-400"></i> 
+              立體透視呈現中島桌、配件壁櫃、形象牆、結帳櫃台、教學與交機之六大功能接點空間關係。
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Selected Zone Detailed Spec Card & Entrance Perspective (5 cols) -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl relative">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+              <span class="text-xs font-mono font-bold text-blue-400" id="zone-spec-id">ZONE SPECIFICATION</span>
+              <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-900/60 text-blue-300 border border-blue-700/40" id="zone-spec-tag">
+                RFP 必備區域
+              </span>
+            </div>
+
+            <div class="mt-4 space-y-4">
+              <div>
+                <h3 class="text-xl font-bold text-white" id="zone-spec-title">旗艦摺疊手機中島桌 (Foldable Hero Island)</h3>
+                <p class="text-xs text-sky-400 font-mono mt-0.5" id="zone-spec-dim">規格尺寸：約 4,050mm 模組化長桌 ｜ 檯面細紋金屬</p>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+                <div class="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
+                  <i class="fa-solid fa-cube text-blue-400"></i> 本案具體配置與硬體：
+                </div>
+                <p class="text-sm text-slate-300 leading-relaxed" id="zone-spec-layout">
+                  細紋金屬曲面底座搭懸浮白檯面。產品配置高架精工支座，同時呈現展開 180° 與半摺 90° 懸停形態，防盜配線完全隱藏於支座管身內部。
+                </p>
+              </div>
+
+              <div class="space-y-2">
+                <div class="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
+                  <i class="fa-solid fa-clipboard-check text-emerald-400"></i> 設計與情境交付證據：
+                </div>
+                <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside" id="zone-spec-evidence">
+                  <li>1比1 關鍵道具 Mock-up 驗收簽樣</li>
+                  <li>實機體驗任務卡：開合多工、雙螢幕預覽拍攝</li>
+                  <li>周邊通道寬度全段實測 ≥ 100cm</li>
+                </ul>
+              </div>
+
+              <div class="pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+                <span class="text-slate-500">權責負責角色：</span>
+                <span class="text-blue-300 font-medium font-mono" id="zone-spec-owner">Spatial Lead + VM Reviewer</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Newly Added: 01_全店入口透視圖 (右邊第二區下方) -->
+          <div class="relative rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl group bg-slate-900">
+            <img 
+              src="https://firebasestorage.googleapis.com/v0/b/k16-tony-ai-wisdom-platform.firebasestorage.app/o/assets%2F6av64EOvvqQNAIoXqcPfHC5BBeF3%2F1791825417527_01_%E5%85%A8%E5%BA%97%E5%85%A5%E5%8F%A3.png?alt=media&token=36aae939-21b9-45eb-9835-154fcc4ff2dc" 
+              alt="SES 高雄夢時代全店入口透視（入口品牌識別與全店視線）" 
+              class="w-full h-auto object-cover transform group-hover:scale-[1.02] transition duration-500 ease-out"
+              loading="lazy"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent pointer-events-none"></div>
+            <div class="absolute bottom-3 left-3 right-3 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-300 font-mono pointer-events-none">
+              <span class="flex items-center gap-1.5 bg-slate-900/85 backdrop-blur-md px-2.5 py-1 rounded-lg border border-slate-700/70 text-sky-300">
+                <i class="fa-solid fa-door-open text-sky-400"></i> 入口品牌識別與全店視線
+              </span>
+              <span class="bg-blue-950/85 backdrop-blur-md text-blue-200 px-2.5 py-1 rounded-lg border border-blue-700/50">
+                面寬 12,040mm 正視視角
+              </span>
+            </div>
+          </div>
+          <p class="text-[11px] text-slate-400 font-mono flex items-center gap-1.5">
+            <i class="fa-solid fa-circle-info text-blue-400"></i> 
+            12,040mm 完整開闊門面，穿透式視線一覽中島、主視覺形象牆與兩側教學及交機專區。
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: Six Core Mandatory Zones Matrix -->
+  <section id="core-zones" class="py-12 border-b border-slate-800/80 bg-[#0c121c]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <div class="text-xs font-mono font-bold tracking-widest text-sky-400 uppercase">
+          MANDATORY REQUIREMENTS MATRIX
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">
+          RFP 六大必備機能區域逐項檢核
+        </h2>
+        <p class="text-sm text-slate-400 mt-2">
+          嚴格呼應招標規範，將品牌形象、配件展售、旗艦試用、彈性培訓、結帳與交機服務完整落地。
+        </p>
+      </div>
+
+      <!-- Zone Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Card 1: 形象牆 -->
+        <div class="rounded-xl bg-slate-900/90 border border-slate-800 p-5 hover:border-blue-500/60 transition shadow-lg flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-blue-400 font-bold">RFP 01 / 形象牆</span>
+              <span class="p-2 rounded-lg bg-blue-500/10 text-blue-400"><i class="fa-solid fa-tv"></i></span>
+            </div>
+            <h3 class="text-lg font-bold text-white">大型商用主視覺牆體</h3>
+            <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+              整合商用大尺寸 LCD／拼接／細點距 LED 主視覺。散熱通風與檢修開孔一體化包覆於金屬背牆後，提供進店第一眼強烈品牌記憶。
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
+            <span class="text-sky-300 font-mono">支援日常/活動切換</span>
+            <span>Content Owner</span>
+          </div>
+        </div>
+
+        <!-- Card 2: 櫃台 Checkout -->
+        <div class="rounded-xl bg-slate-900/90 border border-slate-800 p-5 hover:border-blue-500/60 transition shadow-lg flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-blue-400 font-bold">RFP 02 / 櫃台</span>
+              <span class="p-2 rounded-lg bg-blue-500/10 text-blue-400"><i class="fa-solid fa-cash-register"></i></span>
+            </div>
+            <h3 class="text-lg font-bold text-white">結帳櫃台與 BOH 銜接</h3>
+            <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+              獨立 Checkout 檯面整合收銀設備、POS 及包裝收納。後方設置獨立後場（BOH）檢修通行動線，避免補貨與交機顧客交織干擾。
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
+            <span class="text-sky-300 font-mono">交易與後場直通分流</span>
+            <span>Store Operations</span>
+          </div>
+        </div>
+
+        <!-- Card 3: 配件壁櫃 -->
+        <div class="rounded-xl bg-slate-900/90 border border-slate-800 p-5 hover:border-blue-500/60 transition shadow-lg flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-blue-400 font-bold">RFP 03 / 配件壁櫃</span>
+              <span class="p-2 rounded-lg bg-blue-500/10 text-blue-400"><i class="fa-solid fa-boxes-stacked"></i></span>
+            </div>
+            <h3 class="text-lg font-bold text-white">大容量整面掛式配件模組</h3>
+            <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+              保護殼、貼膜、快充線材標準掛鉤模組化排布。背板均勻微光柔和補光，下櫃採大容量拉門式設計，縮短現場庫存補貨時間。
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
+            <span class="text-sky-300 font-mono">標準化高掛件容量</span>
+            <span>Retail VM Lead</span>
+          </div>
+        </div>
+
+        <!-- Card 4: 旗艦中島桌 -->
+        <div class="rounded-xl bg-slate-900/90 border border-slate-800 p-5 hover:border-blue-500/60 transition shadow-lg flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-blue-400 font-bold">RFP 04 / 中島桌</span>
+              <span class="p-2 rounded-lg bg-blue-500/10 text-blue-400"><i class="fa-solid fa-mobile-screen-button"></i></span>
+            </div>
+            <h3 class="text-lg font-bold text-white">4.05m 摺疊手機體驗中島</h3>
+            <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+              細紋金屬底座與懸浮白檯面。產品採特製立體支座高架展示開合結構，配線及防盜管路完全隱入桌體，保留視覺清爽度。
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
+            <span class="text-sky-300 font-mono">雙面操作多工任務</span>
+            <span>Product Owner</span>
+          </div>
+        </div>
+
+        <!-- Card 5: 彈性教學區 -->
+        <div class="rounded-xl bg-slate-900/90 border border-slate-800 p-5 hover:border-blue-500/60 transition shadow-lg flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-blue-400 font-bold">RFP 05 / 彈性教學區</span>
+              <span class="p-2 rounded-lg bg-blue-500/10 text-blue-400"><i class="fa-solid fa-chalkboard-user"></i></span>
+            </div>
+            <h3 class="text-lg font-bold text-white">4 席相對座席與講師示範</h3>
+            <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+              長向朝店深配置，兩側各 2 席面對面互動，講師於桌端示範。搭配壁面 75 吋大螢幕同步實機鏡像，齊平嵌入式地毯劃分專屬安靜場域。
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
+            <span class="text-sky-300 font-mono">座高650mm搭腳踏支撐</span>
+            <span>Training Specialist</span>
+          </div>
+        </div>
+
+        <!-- Card 6: 交機桌 Customer Service -->
+        <div class="rounded-xl bg-slate-900/90 border border-slate-800 p-5 hover:border-blue-500/60 transition shadow-lg flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-blue-400 font-bold">RFP 06 / 交機桌</span>
+              <span class="p-2 rounded-lg bg-blue-500/10 text-blue-400"><i class="fa-solid fa-shield-halved"></i></span>
+            </div>
+            <h3 class="text-lg font-bold text-white">個別驗機與資料移轉服務</h3>
+            <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+              2 席專屬交機驗機席位，提供 Smart Switch 移轉指引。設置舒適低座等候區，長時間換機備份免站立負擔，獨立動線不占主走道。
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
+            <span class="text-sky-300 font-mono">55吋螢幕公開操作教學</span>
+            <span>Customer Service Lead</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: Architectural Craft, Materials & Ceiling Integration -->
+  <section id="materials-craft" class="py-12 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Text & Specs (6 cols) -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="text-xs font-mono font-bold tracking-widest text-blue-400 uppercase">
+            ARCHITECTURAL CRAFT &amp; CEILING INTEGRATION
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white">
+            精品材質、天花摺疊光形與機電整合
+          </h2>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            改裝工程嚴格依據 2026 SES Briefing Deck 及 GDS2.0 規範，整合夢時代既有天花高差與管線，導入全店摺疊幾何光形與溫潤精品級材料。
+          </p>
+
+          <!-- Craft details tabs -->
+          <div class="space-y-3 pt-2">
+            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i class="fa-solid fa-shapes"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">摺疊幾何天花光形</h4>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                  中央向上微凹折的幾何光帶象徵 Galaxy 摺疊開合姿態，精準對位下方 4.05 米旗艦中島，空調出風、煙霧偵測與檢修口對稱隱藏於兩側金屬黑槽內。
+                </p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i class="fa-solid fa-scroll"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">織紋抗汙壁紙與局部微吸音</h4>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                  壁面採用頂級珠白織紋壁紙與深藍微吸音飾板組合，收編均採用香檳灰髮絲金屬壓條，兼具精品觸感與教學互動時的環境聲學優化。
+                </p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i class="fa-solid fa-border-all"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">暖灰石材地坪與齊平嵌入地毯</h4>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                  全店主通道鋪設抗磨止滑暖灰大板地磚；教學座席與交機座席採 8mm 嵌入式降板地毯齊平無障礙收邊，既可溫馨界定場域，輪椅推車通行亦毫無門檻。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Lighting & Signage Demonstration (6 cols) -->
+        <div class="lg:col-span-6 bg-slate-900/90 border border-slate-700/80 rounded-2xl p-6 shadow-2xl space-y-5">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <span class="text-xs font-mono text-sky-400 font-bold uppercase"><i class="fa-solid fa-lightbulb mr-1.5"></i> 照明控光與招牌規範</span>
+            <span class="text-xs font-mono text-slate-400">GDS2.0 COMPLIANT</span>
+          </div>
+
+          <!-- Interactive Lighting Color Temperature Simulator -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-slate-300 font-medium">照明情境調校模擬：</span>
+              <span id="light-val-text" class="text-sky-300 font-mono font-bold">日常商品聚焦 (4000K 中性白)</span>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-3 pt-1">
+              <button onclick="setLightingPreset('daily')" id="btn-light-daily" class="py-2.5 px-3 rounded-xl bg-blue-600 text-white text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+                <i class="fa-solid fa-sun"></i> 日常中性白光 4000K
+              </button>
+              <button onclick="setLightingPreset('roadshow')" id="btn-light-roadshow" class="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition flex items-center justify-center gap-1.5 border border-slate-700">
+                <i class="fa-solid fa-moon text-sky-400"></i> Roadshow 氛圍微調
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Ceiling Visual Box -->
+          <div id="ceiling-preview-box" class="w-full h-44 rounded-xl bg-gradient-to-b from-slate-900 via-slate-800 to-slate-950 border border-slate-700 p-4 flex flex-col justify-between transition-all duration-500 shadow-inner relative overflow-hidden">
+            <div class="flex items-center justify-between relative z-10 text-[11px] font-mono">
+              <span class="text-sky-300 font-bold">天花摺疊光槽照度預覽</span>
+              <span id="ceiling-cct-tag" class="px-2 py-0.5 rounded bg-blue-900/80 text-blue-200">Ra &ge; 90 / 防眩角 30&deg;</span>
+            </div>
+            <div class="relative z-10 text-center my-auto">
+              <div id="ceiling-center-glow" class="w-3/4 mx-auto h-2 bg-sky-400/90 rounded-full blur-[3px] transition-all duration-500"></div>
+              <p class="text-xs text-slate-200 mt-3 font-medium" id="ceiling-mode-label">
+                商品防眩投射燈聚焦於檯面，控制商品玻璃反光，避免全店均勻泛黃。
+              </p>
+            </div>
+            <div class="relative z-10 flex items-center justify-between text-[10px] text-slate-400 font-mono">
+              <span>空調回風槽共構</span>
+              <span>消防偵煙模組整合</span>
+            </div>
+          </div>
+
+          <!-- Shop Signage Rule Box -->
+          <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+            <div class="text-xs font-bold text-white flex items-center gap-1.5">
+              <i class="fa-solid fa-signature text-blue-400"></i> 招牌與 Lettermark 規範遵循
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              &bull; 門面 3D 白色發光字 Samsung Signage，底板高度佔比嚴格限制於 11%~12% 視線範圍。<br>
+              &bull; Lettermark 淨空安全距離依官方 Artwork 留白；除主招牌外徹底移除重複標誌，避免過度品牌化。
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: G0 - G7 Project Governance Gates -->
+  <section id="project-gates" class="py-12 border-b border-slate-800 bg-[#090d14]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <div class="text-xs font-mono font-bold tracking-widest text-sky-400 uppercase">
+            PROJECT GOVERNANCE &amp; QUALITY ASSURANCE
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">
+            首次合作前置作業與八大查驗關卡 (G0–G7)
+          </h2>
+          <p class="text-sm text-slate-400 mt-1">
+            建立無模糊地帶的推進程序，確保每一工程節點皆有清晰的輸入條件與通過證據。
+          </p>
+        </div>
+      </div>
+
+      <!-- Gates Stepper Pipeline -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+        
+        <!-- G0 -->
+        <div onclick="showGateDetail(0)" class="gate-card p-3 rounded-xl bg-slate-900 border-2 border-blue-500 hover:border-sky-400 cursor-pointer transition shadow-md group">
+          <div class="text-[10px] font-mono font-bold text-blue-400 group-hover:text-sky-300">GATE 00</div>
+          <div class="text-sm font-bold text-white mt-1">資料交接</div>
+          <div class="text-[10px] text-slate-400 mt-1">CAD、GDS清冊</div>
+          <div class="mt-2 text-[9px] px-1.5 py-0.5 rounded bg-blue-900/40 text-blue-300 text-center font-mono">通過核定</div>
+        </div>
+
+        <!-- G1 -->
+        <div onclick="showGateDetail(1)" class="gate-card p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500 cursor-pointer transition shadow-md group">
+          <div class="text-[10px] font-mono font-bold text-slate-400 group-hover:text-sky-300">GATE 01</div>
+          <div class="text-sm font-bold text-white mt-1">現況丈量</div>
+          <div class="text-[10px] text-slate-400 mt-1">夢時代現勘盤點</div>
+          <div class="mt-2 text-[9px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 text-center font-mono">差異清冊</div>
+        </div>
+
+        <!-- G2 -->
+        <div onclick="showGateDetail(2)" class="gate-card p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500 cursor-pointer transition shadow-md group">
+          <div class="text-[10px] font-mono font-bold text-slate-400 group-hover:text-sky-300">GATE 02</div>
+          <div class="text-sm font-bold text-white mt-1">方案審查</div>
+          <div class="text-[10px] text-slate-400 mt-1">動線與VI共用</div>
+          <div class="mt-2 text-[9px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 text-center font-mono">Concept核准</div>
+        </div>
+
+        <!-- G3 -->
+        <div onclick="showGateDetail(3)" class="gate-card p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500 cursor-pointer transition shadow-md group">
+          <div class="text-[10px] font-mono font-bold text-slate-400 group-hover:text-sky-300">GATE 03</div>
+          <div class="text-sm font-bold text-white mt-1">設計凍結</div>
+          <div class="text-[10px] text-slate-400 mt-1">施工圖與樣板</div>
+          <div class="mt-2 text-[9px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 text-center font-mono">HQ/Mall送審</div>
+        </div>
+
+        <!-- G4 -->
+        <div onclick="showGateDetail(4)" class="gate-card p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500 cursor-pointer transition shadow-md group">
+          <div class="text-[10px] font-mono font-bold text-slate-400 group-hover:text-sky-300">GATE 04</div>
+          <div class="text-sm font-bold text-white mt-1">估價採購</div>
+          <div class="text-[10px] text-slate-400 mt-1">BOQ核價/長交期</div>
+          <div class="mt-2 text-[9px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 text-center font-mono">採購發包</div>
+        </div>
+
+        <!-- G5 -->
+        <div onclick="showGateDetail(5)" class="gate-card p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500 cursor-pointer transition shadow-md group">
+          <div class="text-[10px] font-mono font-bold text-slate-400 group-hover:text-sky-300">GATE 05</div>
+          <div class="text-sm font-bold text-white mt-1">製作進場</div>
+          <div class="text-[10px] text-slate-400 mt-1">夜間施工配合</div>
+          <div class="mt-2 text-[9px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 text-center font-mono">工務查驗</div>
+        </div>
+
+        <!-- G6 -->
+        <div onclick="showGateDetail(6)" class="gate-card p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500 cursor-pointer transition shadow-md group">
+          <div class="text-[10px] font-mono font-bold text-slate-400 group-hover:text-sky-300">GATE 06</div>
+          <div class="text-sm font-bold text-white mt-1">測試聯調</div>
+          <div class="text-[10px] text-slate-400 mt-1">AV顯示/防盜Demo</div>
+          <div class="mt-2 text-[9px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 text-center font-mono">系統演練</div>
+        </div>
+
+        <!-- G7 -->
+        <div onclick="showGateDetail(7)" class="gate-card p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500 cursor-pointer transition shadow-md group">
+          <div class="text-[10px] font-mono font-bold text-slate-400 group-hover:text-sky-300">GATE 07</div>
+          <div class="text-sm font-bold text-white mt-1">開店交接</div>
+          <div class="text-[10px] text-slate-400 mt-1">缺失關閉與移交</div>
+          <div class="mt-2 text-[9px] px-1.5 py-0.5 rounded bg-emerald-950 text-emerald-300 text-center font-mono">Readiness</div>
+        </div>
+
+      </div>
+
+      <!-- Active Gate Modal / Inspector Detail -->
+      <div id="gate-detail-box" class="mt-6 p-5 rounded-2xl bg-slate-900/90 border border-slate-700/80 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span id="gate-active-badge" class="px-2 py-0.5 rounded bg-blue-600 text-white font-mono text-xs font-bold">G0 資料交接</span>
+            <h4 id="gate-active-title" class="text-base font-bold text-white">啟動會與圖資缺件清冊確認</h4>
+          </div>
+          <p id="gate-active-desc" class="text-xs text-slate-300">
+            Cogito 交付需求規格確認單、現況 CAD 調閱、GDS 2.0 條款、Samsung 認可招牌供應商資質與夢時代工務進場守則。
+          </p>
+        </div>
+        <div class="shrink-0 text-xs font-mono text-slate-400 bg-slate-950 px-3 py-2 rounded-lg border border-slate-800">
+          通過證據：<span id="gate-active-evidence" class="text-emerald-400 font-bold">Kick-off 簽署與缺件清冊</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION: 10-Week Execution Schedule & BOQ Explorer -->
+  <section id="schedule-boq" class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: 10-Week Execution Schedule (6 cols) -->
+        <div class="lg:col-span-6 bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl space-y-5">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div>
+              <div class="text-xs font-mono font-bold text-sky-400 uppercase">EXECUTION TIMELINE</div>
+              <h3 class="text-xl font-bold text-white mt-0.5">10 週基準改裝進度與關鍵路徑</h3>
+            </div>
+            <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300 font-mono">10W + 2W 緩衝</span>
+          </div>
+
+          <div class="space-y-3">
+            <!-- W1 -->
+            <div class="p-3 rounded-xl bg-slate-950 border-l-4 border-blue-500 border-y border-r border-slate-800">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-white">W1：圖資交接與精準現場丈量</span>
+                <span class="font-mono text-blue-400">Week 1</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-1">取得 CAD、GDS 與夢時代商場進場規範，複核現場管線高差與結構柱。</p>
+            </div>
+
+            <!-- W2-W4 -->
+            <div class="p-3 rounded-xl bg-slate-950 border-l-4 border-sky-400 border-y border-r border-slate-800">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-white">W2–W4：設計方案送審與商業核價</span>
+                <span class="font-mono text-sky-400">Week 2 ~ 4</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-1">Samsung HQ 與夢時代審查同意 Concept，核定 BOQ 明細與個別報價單。</p>
+            </div>
+
+            <!-- W5-W8 -->
+            <div class="p-3 rounded-xl bg-slate-950 border-l-4 border-amber-400 border-y border-r border-slate-800">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-white">W5–W8：精品道具工廠製作與長交期採購</span>
+                <span class="font-mono text-amber-400">Week 5 ~ 8</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-1">鎖定 4.05m 中島工廠排期、大尺寸顯示屏訂購、認可供應商招牌發包。</p>
+            </div>
+
+            <!-- W9-W10 -->
+            <div class="p-3 rounded-xl bg-slate-950 border-l-4 border-emerald-400 border-y border-r border-slate-800">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-white">W9–W10：夜間封閉進場施工與系統聯調</span>
+                <span class="font-mono text-emerald-400">Week 9 ~ 10</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-1">既有裝修拆除、天花光形、石材地坪、道具定位、影音調校與試運轉。</p>
+            </div>
+
+            <!-- W11-W12 -->
+            <div class="p-3 rounded-xl bg-slate-950/60 border-l-4 border-slate-600 border-y border-r border-slate-800">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-slate-300">W11–W12：進度緩衝週期 (非固定延遲)</span>
+                <span class="font-mono text-slate-500">Buffer</span>
+              </div>
+              <p class="text-xs text-slate-500 mt-1">預留不可抗力天候、商場特殊檔期與長交期料件國際物流彈性。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: BOQ & Individual Quotation Structure (6 cols) -->
+        <div class="lg:col-span-6 bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl space-y-5">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div>
+              <div class="text-xs font-mono font-bold text-emerald-400 uppercase">BILL OF QUANTITIES (BOQ)</div>
+              <h3 class="text-xl font-bold text-white mt-0.5">個別報價分項與成本架構</h3>
+            </div>
+            <span class="text-xs text-slate-400 font-mono">分項逐筆簽核</span>
+          </div>
+
+          <!-- Interactive Category Filter -->
+          <div class="flex flex-wrap gap-1.5 text-xs">
+            <button onclick="filterBOQ('all')" id="btn-boq-all" class="px-2.5 py-1 rounded bg-blue-600 text-white font-medium">全部項目</button>
+            <button onclick="filterBOQ('decor')" id="btn-boq-decor" class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white">室內硬裝</button>
+            <button onclick="filterBOQ('fixture')" id="btn-boq-fixture" class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white">精品道具</button>
+            <button onclick="filterBOQ('display')" id="btn-boq-display" class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white">影音AV設備</button>
+          </div>
+
+          <!-- Dynamic BOQ Table -->
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="border-b border-slate-800 text-slate-400 font-mono">
+                  <th class="py-2.5 px-3">工程／報價分項</th>
+                  <th class="py-2.5 px-3">數量基準</th>
+                  <th class="py-2.5 px-3">工藝與交付標準</th>
+                </tr>
+              </thead>
+              <tbody id="boq-tbody" class="divide-y divide-slate-800/60 text-slate-300">
+                <tr data-cat="display" class="hover:bg-slate-800/40 transition">
+                  <td class="py-2.5 px-3 font-medium text-white">主形象牆 AV 系統</td>
+                  <td class="py-2.5 px-3 font-mono text-sky-400">1 套</td>
+                  <td class="py-2.5 px-3 text-slate-400">大尺寸商用顯示屏、訊號控制與背牆散熱模組</td>
+                </tr>
+                <tr data-cat="decor" class="hover:bg-slate-800/40 transition">
+                  <td class="py-2.5 px-3 font-medium text-white">天花摺疊光形工程</td>
+                  <td class="py-2.5 px-3 font-mono text-sky-400">1 式</td>
+                  <td class="py-2.5 px-3 text-slate-400">幾何折線吊頂、間接光源槽、空調消防檢修整合</td>
+                </tr>
+                <tr data-cat="decor" class="hover:bg-slate-800/40 transition">
+                  <td class="py-2.5 px-3 font-medium text-white">暖灰石材地坪與嵌入地毯</td>
+                  <td class="py-2.5 px-3 font-mono text-sky-400">全區鋪面</td>
+                  <td class="py-2.5 px-3 text-slate-400">大板石材地磚、8mm 降板地毯齊平收邊</td>
+                </tr>
+                <tr data-cat="fixture" class="hover:bg-slate-800/40 transition">
+                  <td class="py-2.5 px-3 font-medium text-white">4.05m 摺疊中島長桌</td>
+                  <td class="py-2.5 px-3 font-mono text-sky-400">1 座</td>
+                  <td class="py-2.5 px-3 text-slate-400">細紋金屬曲面、懸浮檯面、隱藏式防盜配線</td>
+                </tr>
+                <tr data-cat="fixture" class="hover:bg-slate-800/40 transition">
+                  <td class="py-2.5 px-3 font-medium text-white">整面掛式配件壁櫃</td>
+                  <td class="py-2.5 px-3 font-mono text-sky-400">4 模組</td>
+                  <td class="py-2.5 px-3 text-slate-400">標準掛鉤背板、均勻背光柔光罩、下櫃庫存拉門</td>
+                </tr>
+                <tr data-cat="fixture" class="hover:bg-slate-800/40 transition">
+                  <td class="py-2.5 px-3 font-medium text-white">結帳櫃台與交機家具</td>
+                  <td class="py-2.5 px-3 font-mono text-sky-400">各 1 處</td>
+                  <td class="py-2.5 px-3 text-slate-400">POS 專用櫃、2 席高桌可調椅、低座等候單椅</td>
+                </tr>
+                <tr data-cat="display" class="hover:bg-slate-800/40 transition">
+                  <td class="py-2.5 px-3 font-medium text-white">教學(75")與客服(55")顯示</td>
+                  <td class="py-2.5 px-3 font-mono text-sky-400">2 式</td>
+                  <td class="py-2.5 px-3 text-slate-400">商用大屏、壁面嵌入框、分區訊號切換器</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-[11px] text-slate-400 flex items-center justify-between">
+            <span>商務原則：以品質需求形成正式 BOQ，單價與總價由 Cogito 另函送審。</span>
+            <span class="text-blue-400 font-mono">100% 透明核價</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer & Governance Statement -->
+  <footer class="mt-12 pt-8 border-t border-slate-800/80 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+      <div>
+        <span class="font-bold text-white">SES 高雄夢時代改裝規劃 (V3)</span>
+        <span class="mx-2 text-slate-600">|</span>
+        <span>Cogito Retail Design Team &copy; 2026</span>
+        <span class="mx-2 text-slate-600">|</span>
+        <span class="text-slate-300">TONY (Proposal Architect / Reviewer)</span>
+      </div>
+      <div class="text-[11px] text-slate-500 font-mono">
+        本頁為設計方案與情境審查，尺寸、材料與施工以現勘 CAD 與官方核定圖為準。
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Application State
+    const storeState = {
+      mode: 'daily', // 'daily' or 'roadshow'
+      activeZone: 'island',
+      activeGate: 0
+    };
+
+    // Six Core Zones Database
+    const zonesData = {
+      herowall: {
+        id: 'ZONE 01',
+        title: 'Galaxy 品牌主視覺形象牆',
+        dim: '大尺寸商用顯示主牆 ｜ 背部散熱隔音整合',
+        tag: 'RFP 必備區域',
+        layout: '整合商用 LCD 拼接或細點距 LED 屏幕，兩側俐落收邊與微暗光槽，提供進店第一眼的品牌科技感與震撼力。',
+        evidence: [
+          '散熱通風量與維修掀板檢驗',
+          '影像訊號切換器與備援播放器測試',
+          '日常 KV 與活動專屬宣傳片 Playlist'
+        ],
+        owner: 'Content Owner + Spatial Lead'
+      },
+      checkout: {
+        id: 'ZONE 02',
+        title: '結帳櫃台 (Checkout Counter & BOH)',
+        dim: '寬度依模組配比 ｜ 檯面高度 900mm',
+        tag: 'RFP 必備區域',
+        layout: '精緻曲面金屬結帳台，整合 POS 收銀、掃描與收據機管線，背部即為 BOH 庫房與設備維修門，動線嚴格分流不干擾客區。',
+        evidence: [
+          '收銀台強弱電預留與檢修口',
+          '後場 BOH 門扇開合與進出動線淨寬核對',
+          '排隊等待區防溢流至主通道'
+        ],
+        owner: 'Store Operations Lead'
+      },
+      accessories: {
+        id: 'ZONE 03',
+        title: '整面大容量掛式配件壁櫃',
+        dim: '4 模組標準壁櫃 ｜ 高容量掛鉤陳列',
+        tag: 'RFP 必備區域',
+        layout: '完整配件掛鉤展示牆，保護殼、線材與充電器立體掛載，背板均勻柔光不刺眼，下方設置大容量封閉式庫存收納櫃。',
+        evidence: [
+          'SKU 包裝厚度與間距懸掛實物核對',
+          '下櫃補貨開合不阻礙顧客瀏覽通道',
+          '背光照明顯色指數 Ra ≥ 90 簽樣'
+        ],
+        owner: 'Retail VM Lead'
+      },
+      island: {
+        id: 'ZONE 04',
+        title: '旗艦摺疊手機中島桌 (Foldable Hero Island)',
+        dim: '約 4,050mm 模組化長桌 ｜ 細紋金屬懸浮檯面',
+        tag: 'RFP 必備區域',
+        layout: '細紋金屬曲面底座搭懸浮白檯面。產品配置高架精工支座，同時呈現展開 180° 與半摺 90° 懸停形態，防盜配線完全隱藏於支座管身內部。',
+        evidence: [
+          '1比1 關鍵道具 Mock-up 驗收簽樣',
+          '實機體驗任務卡：開合多工、雙螢幕預覽拍攝',
+          '周邊通道寬度全段實測 ≥ 100cm'
+        ],
+        owner: 'Spatial Lead + VM Reviewer'
+      },
+      training: {
+        id: 'ZONE 05',
+        title: '彈性教學與互動工作坊 (Training Area)',
+        dim: '長向向店深配置 ｜ 4 席相對座位 + 75吋商用大屏',
+        tag: 'RFP 必備區域',
+        layout: '面對面 4 席高桌座席搭配座高 650mm 具腳踏工學椅，講師位於桌端示範。齊平嵌入式地毯打造無障礙專屬教學包廂氛圍。',
+        evidence: [
+          '75吋螢幕實機鏡像無線傳輸實測',
+          '學員膝部深度與拉椅動作無障礙複核',
+          '可調座椅人體工學實物 Fit Test'
+        ],
+        owner: 'Training Specialist'
+      },
+      delivery: {
+        id: 'ZONE 06',
+        title: '專屬交機桌與資料移轉 (Customer Service)',
+        dim: '2 席專屬驗機席 + 55吋螢幕 + 低座等候區',
+        tag: 'RFP 必備區域',
+        layout: '一對一尊榮驗機與 Smart Switch 資料移轉。輔以 55 吋螢幕公開操作引導，獨立低座沙發等候區免去顧客站立疲憊。',
+        evidence: [
+          '驗機專用高演色檢查光源測試',
+          '顧客裝置隱私與傳輸安全 SOP 認證',
+          '等候區動線不阻礙主通道'
+        ],
+        owner: 'Customer Service Lead'
+      }
+    };
+
+    // Project Gates Database
+    const gatesData = [
+      {
+        gate: 'G0 資料交接',
+        title: '啟動會與圖資缺件清冊確認',
+        desc: 'Cogito 交付需求規格確認單、現況 CAD 調閱、GDS 2.0 條款、Samsung 認可招牌供應商資質與夢時代工務進場守則。',
+        evidence: 'Kick-off 簽署與缺件清冊'
+      },
+      {
+        gate: 'G1 現況丈量',
+        title: '夢時代現場全面精密現勘',
+        desc: '建築外框、既有地坪材質、天花實際樑下淨高、空調偵煙管路、柱位及門扇位置逐項複核並建立 As-built 清冊。',
+        evidence: 'Survey 差異對照表'
+      },
+      {
+        gate: 'G2 方案審查',
+        title: '共用平面與動線原則審查',
+        desc: '依據 12,040mm 入口及通道淨寬 ≥ 100cm 標準，送審日常與 Roadshow 共用空間架構並核定例外條款。',
+        evidence: 'Concept 核准書簽認'
+      },
+      {
+        gate: 'G3 設計凍結',
+        title: '施工圖、材料樣板與 3D 渲染凍結',
+        desc: '完成施工立剖面圖、天花吊掛結構計算、織紋壁紙與石材實體簽樣，提請 Samsung HQ 與夢時代工務核准。',
+        evidence: 'Shop Drawing 簽核章'
+      },
+      {
+        gate: 'G4 估價採購',
+        title: 'BOQ 審查、個別報價核定與發包',
+        desc: '核定最終工程數量清單，確認 4.05m 中島、大尺寸液晶屏與 3D 招牌認可工廠排期與到貨交期。',
+        evidence: '採購合約與發包排程'
+      },
+      {
+        gate: 'G5 製作進場',
+        title: '道具工廠製作與夜間進場施工',
+        desc: '拆除既有裝修，完成天花摺疊光形結構、地坪石材大板鋪設、嵌入地毯收邊與各分區道具定位。',
+        evidence: '工務日誌與查驗紀錄'
+      },
+      {
+        gate: 'G6 測試聯調',
+        title: '系統整合、影音與產品防盜測試',
+        desc: '主形象牆、教學 75 吋屏與交機 55 吋屏分區播放與斷線備援測試；實機充電防盜與 Roadshow 場景光預演。',
+        evidence: '聯調測試報告書'
+      },
+      {
+        gate: 'G7 開店交接',
+        title: '缺失完全關閉與正式交付營運',
+        desc: '確認所有重大及安全缺失全數關閉，點交資產清冊、維修保固手冊、清潔保養指南，提請 Opening Readiness 簽章。',
+        evidence: 'Readiness 驗收交付書'
+      }
+    ];
+
+    // Mode Switching Logic
+    function switchStoreMode(mode) {
+      storeState.mode = mode;
+      
+      const btnDaily = document.getElementById('btn-mode-daily');
+      const btnRoadshow = document.getElementById('btn-mode-roadshow');
+      const statusDot = document.getElementById('mode-status-dot');
+      const badgeTitle = document.getElementById('mode-badge-title');
+      const timeTag = document.getElementById('mode-time-tag');
+      const summaryText = document.getElementById('mode-summary-text');
+      const metricSeats = document.getElementById('metric-seats');
+      const metricScreen = document.getElementById('metric-screen');
+      const mapHeroText = document.getElementById('map-herowall-text');
+
+      if (mode === 'daily') {
+        // Daily Button Active Style
+        btnDaily.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 text-white shadow transition-all duration-300";
+        btnRoadshow.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all duration-300";
+        
+        statusDot.className = "w-2.5 h-2.5 rounded-full bg-blue-500";
+        badgeTitle.textContent = "當前模式：日常旗艦零售";
+        timeTag.textContent = "標準 4000K 商品聚焦光";
+        summaryText.textContent = "日常營運注重安靜舒適的高品質賞機動線。4.05米中島維持產品足夠留白；左側教學桌容納個別深度諮詢；右側交機桌專屬驗機並引導至低座等候區。";
+        metricSeats.textContent = "4席 (對坐)";
+        metricScreen.textContent = "Galaxy KV";
+        mapHeroText.textContent = "大尺寸液晶 / 散熱檢修";
+
+        setLightingPreset('daily');
+      } else {
+        // Roadshow Button Active Style
+        btnDaily.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all duration-300";
+        btnRoadshow.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow transition-all duration-300 roadshow-active-glow";
+        
+        statusDot.className = "w-2.5 h-2.5 rounded-full bg-sky-400 badge-pulse";
+        badgeTitle.textContent = "當前模式：Roadshow 互動工作坊";
+        timeTag.textContent = "全店情境光調暗 / 焦點動態強化";
+        summaryText.textContent = "活動期間全店保持共用配置不挪動中島！教學區切換為 Foldable 工作坊模式，4位學員實機多工操作、講師桌端連線 75 吋屏同步示範；主視覺牆同步播映活動主題。結帳與交機同步維持服務。";
+        metricSeats.textContent = "4席 + 1講師";
+        metricScreen.textContent = "Workshop 示範";
+        mapHeroText.textContent = "Galaxy Workshop 聯播";
+
+        setLightingPreset('roadshow');
+      }
+    }
+
+    function toggleModeAuto() {
+      if (storeState.mode === 'daily') {
+        switchStoreMode('roadshow');
+      } else {
+        switchStoreMode('daily');
+      }
+    }
+
+    // Zone Selection Hotspot
+    function selectZone(zoneKey) {
+      storeState.activeZone = zoneKey;
+      const data = zonesData[zoneKey];
+      if (!data) return;
+
+      // Update Inspector panel
+      document.getElementById('zone-spec-id').textContent = data.id;
+      document.getElementById('zone-spec-tag').textContent = data.tag;
+      document.getElementById('zone-spec-title').textContent = data.title;
+      document.getElementById('zone-spec-dim').textContent = data.dim;
+      document.getElementById('zone-spec-layout').textContent = data.layout;
+      document.getElementById('zone-spec-owner').textContent = data.owner;
+
+      const evidenceList = document.getElementById('zone-spec-evidence');
+      evidenceList.innerHTML = '';
+      data.evidence.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        evidenceList.appendChild(li);
+      });
+
+      // Clear all active borders on map
+      ['accessories', 'herowall', 'checkout', 'training', 'island', 'delivery'].forEach(k => {
+        const el = document.getElementById(`map-${k}`);
+        if (el) el.classList.remove('ring-2', 'ring-sky-400');
+      });
+
+      const activeEl = document.getElementById(`map-${zoneKey}`);
+      if (activeEl) activeEl.classList.add('ring-2', 'ring-sky-400');
+    }
+
+    // Lighting Simulator
+    function setLightingPreset(type) {
+      const btnDaily = document.getElementById('btn-light-daily');
+      const btnRoadshow = document.getElementById('btn-light-roadshow');
+      const label = document.getElementById('light-val-text');
+      const centerGlow = document.getElementById('ceiling-center-glow');
+      const cctTag = document.getElementById('ceiling-cct-tag');
+      const modeLabel = document.getElementById('ceiling-mode-label');
+
+      if (type === 'daily') {
+        btnDaily.className = "py-2.5 px-3 rounded-xl bg-blue-600 text-white text-xs font-bold transition flex items-center justify-center gap-1.5 shadow";
+        btnRoadshow.className = "py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition flex items-center justify-center gap-1.5 border border-slate-700";
+        label.textContent = "日常商品聚焦 (4000K 中性白)";
+        centerGlow.className = "w-3/4 mx-auto h-2 bg-sky-400/90 rounded-full blur-[3px] transition-all duration-500";
+        cctTag.textContent = "Ra ≥ 90 / 防眩角 30° / 4000K";
+        modeLabel.textContent = "商品防眩投射燈聚焦於檯面，控制商品玻璃反光，避免全店均勻泛黃。";
+      } else {
+        btnDaily.className = "py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition flex items-center justify-center gap-1.5 border border-slate-700";
+        btnRoadshow.className = "py-2.5 px-3 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 text-white text-xs font-bold transition flex items-center justify-center gap-1.5 shadow roadshow-active-glow";
+        label.textContent = "Roadshow 氛圍微調 (沉浸式情境光)";
+        centerGlow.className = "w-4/5 mx-auto h-3 bg-blue-500 rounded-full blur-[6px] transition-all duration-500";
+        cctTag.textContent = "活動情境光模組啟動 / 螢幕聚焦";
+        modeLabel.textContent = "環境燈適度調低，摺疊天花光帶發散品牌藍色微光，強化 75 吋教學屏與實機任務沉浸感。";
+      }
+    }
+
+    // Gate Pipeline Selector
+    function showGateDetail(index) {
+      storeState.activeGate = index;
+      const g = gatesData[index];
+      if (!g) return;
+
+      document.getElementById('gate-active-badge').textContent = g.gate;
+      document.getElementById('gate-active-title').textContent = g.title;
+      document.getElementById('gate-active-desc').textContent = g.desc;
+      document.getElementById('gate-active-evidence').textContent = g.evidence;
+
+      // Update gate-card border styles
+      const cards = document.querySelectorAll('.gate-card');
+      cards.forEach((card, idx) => {
+        if (idx === index) {
+          card.classList.remove('border-slate-800');
+          card.classList.add('border-blue-500', 'bg-slate-800/80');
+        } else {
+          card.classList.remove('border-blue-500', 'bg-slate-800/80');
+          card.classList.add('border-slate-800');
+        }
+      });
+    }
+
+    // BOQ Filter
+    function filterBOQ(category) {
+      const rows = document.querySelectorAll('#boq-tbody tr');
+      const buttons = ['all', 'decor', 'fixture', 'display'];
+      
+      buttons.forEach(b => {
+        const btn = document.getElementById(`btn-boq-${b}`);
+        if (b === category) {
+          btn.className = "px-2.5 py-1 rounded bg-blue-600 text-white font-medium";
+        } else {
+          btn.className = "px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white";
+        }
+      });
+
+      rows.forEach(r => {
+        if (category === 'all' || r.getAttribute('data-cat') === category) {
+          r.style.display = '';
+        } else {
+          r.style.display = 'none';
+        }
+      });
+    }
+
+    // Initialize Default States
+    window.onload = function() {
+      selectZone('island');
+      showGateDetail(0);
+    };
+  </script>
+</body>
+</html>
